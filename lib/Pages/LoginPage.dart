@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/Inscription.dart';
+import 'package:pprojet/Pages/color.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -100,9 +101,9 @@ class LoginPage extends StatelessWidget {
                 SizedBox(height: 68),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(104, 108, 244, 1),
+                        backgroundColor: color_2,
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 29, vertical:10)
+                        const EdgeInsets.symmetric(horizontal: 40, vertical:20)
                     ),
                     child: Text('Se connecter'),
                     onPressed: () {
@@ -115,9 +116,11 @@ class LoginPage extends StatelessWidget {
                 SizedBox(height: 10),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(104, 108, 244, 1),
+                        backgroundColor: color_3,
+                        side : BorderSide(width : 1.5, color : color_2
+                        ),
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 29, vertical:10)
+                        const EdgeInsets.symmetric(horizontal: 29, vertical:20)
                     ),
                     child: const Text('Créer un nouveau compte'),
                     onPressed: () {
