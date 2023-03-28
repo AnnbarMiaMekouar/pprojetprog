@@ -22,11 +22,11 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<DisconnectUserEvent>(_onDisconnect);
   }
 
-  Future<void> _onConnect(event, emit) async {
+  Future<void> _onConnect(event, emit) async { //rajouter avec firebase
     emit(UserState(true));
   }
 
-  Future<void> _onDisconnect(event, emit) async {
+  Future<void> _onDisconnect(event, emit) async { //rajouter avec firebase
     emit(UserState(false));
   }
 }
@@ -66,6 +66,7 @@ class MyApp extends StatelessWidget {
           }
         },
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           navigatorKey: _navigatorKey,
           title: 'Jeux Vidéos',
           theme: ThemeData(

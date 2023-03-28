@@ -3,9 +3,15 @@ import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/Inscription.dart';
 import 'package:pprojet/Pages/color.dart';
 
-class LoginPage extends StatelessWidget {
+
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,12 +104,15 @@ class LoginPage extends StatelessWidget {
                       ]
                   ),
                 ),
-                SizedBox(height: 68),
+                SizedBox(height: 70),
+                SizedBox(height: 68, width: 320,
+                child :
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
+
                         backgroundColor: color_2,
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 40, vertical:20)
+                        const EdgeInsets.symmetric(horizontal: 10, vertical:25)
                     ),
                     child: Text('Se connecter'),
                     onPressed: () {
@@ -112,6 +121,7 @@ class LoginPage extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => Accueil()),
                       );
                     }
+                 ),
                 ),
                 SizedBox(height: 10),
                 ElevatedButton(
@@ -120,7 +130,7 @@ class LoginPage extends StatelessWidget {
                         side : BorderSide(width : 1.5, color : color_2
                         ),
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 29, vertical:20)
+                        const EdgeInsets.symmetric(horizontal: 79, vertical:25)
                     ),
                     child: const Text('Créer un nouveau compte'),
                     onPressed: () {
