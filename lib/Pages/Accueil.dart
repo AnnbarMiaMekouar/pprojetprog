@@ -113,6 +113,21 @@
                                 color: Colors.white,
                               ),
                             ),
+                            SizedBox(height: 10),
+                            ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                            backgroundColor: color_2,
+                                padding:
+                                const EdgeInsets.symmetric(horizontal: 9, vertical:5)
+                            ),
+                                child: const Text('En savoir plus'),
+                                onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => WhishList()),
+                              );
+                            }
+                            )
                           ],
                         ),
                       ),
@@ -374,7 +389,54 @@
                         )
                     )
                 ),
-
+                Card(
+                    child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/backgroundcard.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: ListTile(
+                          leading: Image.asset(
+                              '',
+                              width: 50),
+                          title: Text(''),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(''),
+                              Text(''),
+                            ],
+                          ),
+                          trailing : SizedBox(
+                            width: 90.0,
+                            height: 100.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                backgroundColor: color_2,
+                                elevation: 0,
+                                padding: const EdgeInsets.all(2),
+                                textStyle: const TextStyle(fontSize: 18),
+                              ),
+                              child: const Text(
+                                'En savoir plus',
+                                textAlign: TextAlign.center,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => WhishList()),
+                                );
+                              },
+                            ),
+                          ),
+                        )
+                    )
+                ),
                 ]
           )
       );
