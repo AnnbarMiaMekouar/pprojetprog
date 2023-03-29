@@ -126,7 +126,7 @@
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children : [ Text('Les meilleures ventes',
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.right,
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
