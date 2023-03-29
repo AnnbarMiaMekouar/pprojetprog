@@ -82,7 +82,7 @@
                     ),
                       ),
                 Card(
-                  margin: const EdgeInsets.all(0),
+                 // margin: const EdgeInsets.all(0),
                   child: Stack(
                     children: [
                       Image.asset(
@@ -120,13 +120,11 @@
                   ),
                 ),
                 SizedBox(height: 10),
-                Padding(
-                    padding: EdgeInsets.all(0.0),
+                Container(
+                    //padding: EdgeInsets.all(0.0),
                 child: Column (
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children : [ Text('Les meilleures ventes',
-                      textAlign: TextAlign.right,
+                      textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -136,90 +134,49 @@
                     ]
                 )
                 ),
-                SizedBox(height: 10),
                 Card(
                     child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/backgroundcard.png'),
-                          fit: BoxFit.cover,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/backgroundcard.png'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                  child: ListTile(
-                    leading: Image.asset(
-                      'assets/images/Minecraft.jpeg',
-                      width: 50),
-                    title: Text(''),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(''),
-                        Text(''),
-                      ],
-                    ),
-                    trailing: Container(
-                        width: 100,
-                        height: 400,
-                      child :Padding(
-                          padding: const EdgeInsets.all(0),
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
+                        child: ListTile(
+                          leading: Image.asset(
+                              '',
+                              width: 50),
+                          title: Text(''),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(''),
+                              Text(''),
+                            ],
+                          ),
+                          trailing : SizedBox(
+                            width: 90.0,
+                            height: 100.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
                                 backgroundColor: color_2,
-                                padding:
-                                const EdgeInsets.symmetric(horizontal: 29, vertical:10)
-                            ),
-                            child: const Text('En savoir plus'),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => WhishList()),
-                              );
-                            }
-                            )
-                    ),
-                  ),
-                )
-                )
-                ),
-                Card(
-                    child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/backgroundcard.png'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: ListTile(
-                          leading: Image.asset(
-                              'assets/images/Minecraft.jpeg',
-                              width: 50),
-                          title: Text(''),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(''),
-                              Text(''),
-                            ],
-                          ),
-                          trailing: Container(
-                            width: 100,
-                            height: 400,
-                            child :Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: color_2,
-                                        padding:
-                                        const EdgeInsets.symmetric(horizontal: 29, vertical:10)
-                                    ),
-                                    child: const Text('En savoir plus'),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => WhishList()),
-                                      );
-                                    }
-                                )
+                                elevation: 0,
+                                padding: const EdgeInsets.all(2),
+                                textStyle: const TextStyle(fontSize: 18),
+                              ),
+                              child: const Text(
+                                'En savoir plus',
+                                textAlign: TextAlign.center,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => WhishList()),
+                                );
+                              },
                             ),
                           ),
                         )
@@ -235,7 +192,7 @@
                         ),
                         child: ListTile(
                           leading: Image.asset(
-                              'assets/images/Minecraft.jpeg',
+                              '',
                               width: 50),
                           title: Text(''),
                           subtitle: Column(
@@ -245,31 +202,180 @@
                               Text(''),
                             ],
                           ),
-                          trailing: Container(
-                            width: 100,
-                            height: 400,
-                            child :Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: color_2,
-                                        padding:
-                                        const EdgeInsets.symmetric(horizontal: 29, vertical:10)
-                                    ),
-                                    child: const Text('En savoir plus'),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => WhishList()),
-                                      );
-                                    }
-                                )
+                          trailing : SizedBox(
+                            width: 90.0,
+                            height: 100.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                backgroundColor: color_2,
+                                elevation: 0,
+                                padding: const EdgeInsets.all(2),
+                                textStyle: const TextStyle(fontSize: 18),
+                              ),
+                              child: const Text(
+                                'En savoir plus',
+                                textAlign: TextAlign.center,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => WhishList()),
+                                );
+                              },
                             ),
                           ),
                         )
                     )
-                )
-              ]
+                ),
+                Card(
+                    child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/backgroundcard.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: ListTile(
+                          leading: Image.asset(
+                              '',
+                              width: 50),
+                          title: Text(''),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(''),
+                              Text(''),
+                            ],
+                          ),
+                          trailing : SizedBox(
+                            width: 90.0,
+                            height: 100.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                backgroundColor: color_2,
+                                elevation: 0,
+                                padding: const EdgeInsets.all(2),
+                                textStyle: const TextStyle(fontSize: 18),
+                              ),
+                              child: const Text(
+                                'En savoir plus',
+                                textAlign: TextAlign.center,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => WhishList()),
+                                );
+                              },
+                            ),
+                          ),
+                        )
+                    )
+                ),
+                Card(
+                    child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/backgroundcard.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: ListTile(
+                          leading: Image.asset(
+                              '',
+                              width: 50),
+                          title: Text(''),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(''),
+                              Text(''),
+                            ],
+                          ),
+                          trailing : SizedBox(
+                            width: 90.0,
+                            height: 100.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                backgroundColor: color_2,
+                                elevation: 0,
+                                padding: const EdgeInsets.all(2),
+                                textStyle: const TextStyle(fontSize: 18),
+                              ),
+                              child: const Text(
+                                'En savoir plus',
+                                textAlign: TextAlign.center,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => WhishList()),
+                                );
+                              },
+                            ),
+                          ),
+                        )
+                    )
+                ),
+                Card(
+                    child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/backgroundcard.png'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: ListTile(
+                          leading: Image.asset(
+                              '',
+                              width: 50),
+                          title: Text(''),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(''),
+                              Text(''),
+                            ],
+                          ),
+                          trailing : SizedBox(
+                            width: 90.0,
+                            height: 100.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                backgroundColor: color_2,
+                                elevation: 0,
+                                padding: const EdgeInsets.all(2),
+                                textStyle: const TextStyle(fontSize: 18),
+                              ),
+                              child: const Text(
+                                'En savoir plus',
+                                textAlign: TextAlign.center,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => WhishList()),
+                                );
+                              },
+                            ),
+                          ),
+                        )
+                    )
+                ),
+
+                ]
           )
       );
     }
