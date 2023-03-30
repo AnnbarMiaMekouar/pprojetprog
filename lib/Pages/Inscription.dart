@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/Accueil.dart';
+import 'package:pprojet/Pages/color.dart';
 
 class Inscription extends StatefulWidget {
   const Inscription({Key? key}) : super(key: key);
@@ -42,8 +43,28 @@ class _InscriptionState extends State<Inscription> {
         isTextFieldEmpty = verifMotDePasseController.text.isEmpty;
       });
     });
-    User? user = null;
 }
+  Future<bool> createUser(String email, String password) async {
+    try {
+      await autentification.createUserWithEmailAndPassword(
+          email: email, password: password);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Accueil()),
+      );
+      return true;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('Le mot de passe est trop faible.');
+      } else if (e.code == 'email-already-in-use') {
+        print('L\'e-mail est déjà utilisé.');
+      }
+      return false;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,22 +222,26 @@ class _InscriptionState extends State<Inscription> {
                       height: 68,
                       width: 320,
                       child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromRGBO(104, 108, 244, 1),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 29, vertical: 10)),
-                          child: Text('Inscription'),
-                          onPressed: isTextFieldEmpty ? null :() {
-                            FirebaseAuth.instance.createUserWithEmailAndPassword(
-                                email: emailController.text,
-                                password: motDePasseController.text).then((
-                                value) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Accueil()));
-                            });
-                          }),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: color_2,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 29, vertical: 10)),
+                        child: Text('Inscription'),
+                        onPressed: isTextFieldEmpty
+                            ? null
+                            : () async {
+                          bool result = await createUser(
+                              emailController.text, motDePasseController.text);
+                          if (result) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Accueil()),
+                            );
+                          } else {
+                            // Gérer l'échec de l'inscription ici, par exemple en affichant un message d'erreur
+                          }
+                        },
+                      ),
                     ),
                   ]
               ),

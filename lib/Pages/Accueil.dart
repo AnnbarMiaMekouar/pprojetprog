@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/WhishList.dart';
 import 'package:pprojet/Pages/color.dart';
+import 'package:pprojet/Pages/Recherche.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 
 
 class Accueil extends StatefulWidget {
@@ -80,9 +82,22 @@ class _AccueilState extends State<Accueil> {
                           border: const OutlineInputBorder(),
                           hintText: 'Rechercher un jeu...',
                           hintStyle: const TextStyle(color:Colors.white),
-                        )
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Recherche()), // Remplacez OtherPage() par le nom de la page vers laquelle vous souhaitez naviguer
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/images/Search.png',
+                              width: 20,
+                              height: 20,
+                            ),
+                          ),
+                        ),
                     ),
-                  ),
+                    ),
                   Card(
                     // margin: const EdgeInsets.all(0),
                     child: Stack(
@@ -139,18 +154,22 @@ class _AccueilState extends State<Accueil> {
                   SizedBox(height: 10),
                   Container(
                     //padding: EdgeInsets.all(0.0),
-                      child: Column (
-                          children : [ Text('Les meilleures ventes',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              decoration: TextDecoration.underline,
-                            ),
-                          )
-                          ]
-                      )
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 7.0),// Aligner le texte à gauche
+                        child: Text(
+                          'Les meilleures ventes',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                  )
                   ),
+                  SizedBox(height : 10),
                   Card(
                       child: Container(
                         color: color_3,

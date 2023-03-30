@@ -3,9 +3,6 @@ import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/Inscription.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,37 +11,34 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-
 class _LoginPageState extends State<LoginPage> {
-
   final formKey = GlobalKey<FormState>();
   final autentification = FirebaseAuth.instance;
   final emailController = TextEditingController();
   final mdpController = TextEditingController();
   bool isTextFieldEmpty = false;
 
- void initState(){
-   super.initState();
-   mdpController.addListener(() {
-     setState(() {
-       isTextFieldEmpty = mdpController.text.isEmpty;
-     });
-   });
-   emailController.addListener(() {
-     setState(() {
-       isTextFieldEmpty = emailController.text.isEmpty;
-     });
-   });
-   User? user = null;
- }
+  void initState() {
+    super.initState();
+    mdpController.addListener(() {
+      setState(() {
+        isTextFieldEmpty = mdpController.text.isEmpty;
+      });
+    });
+    emailController.addListener(() {
+      setState(() {
+        isTextFieldEmpty = emailController.text.isEmpty;
+      });
+    });
+  }
 
   Future<bool> login(String email, String password) async {
     try {
-      UserCredential user = await autentification.signInWithEmailAndPassword(
-          email: emailController.text,
-          password: mdpController.text,
+      await autentification.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: mdpController.text,
       );
-      // Connexion réussie, redirigez l'utilisateur vers une autre page
+      return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('Aucun utilisateur trouvé pour cet e-mail.');
@@ -53,6 +47,11 @@ class _LoginPageState extends State<LoginPage> {
       }
     }
     return false;
+  }
+
+  void _showSnackBar(String message) {
+    final snackBar = SnackBar(content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -166,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                           MaterialPageRoute(builder: (context) => Accueil()),
                         );
                       } else {
-                        // Show an error message to the user or handle the failed login as needed
+                        _showSnackBar("La connexion a échoué. Veuillez vérifier vos identifiants et réessayer.");
                       }
                     }
                   )),
