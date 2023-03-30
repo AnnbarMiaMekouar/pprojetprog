@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1038189816123",
+    "project_id": "progmobile-745dc",
+    "storage_bucket": "progmobile-745dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038189816123:android:a4e391c3aad8bead3cef1e",
+        "android_client_info": {
+          "package_name": "com.example.pprojet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1038189816123-qq786mscjhjp3i3l63s790h8us2jt0iu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4lYivRcBs4FCXEYUr7wETBneLdyvolxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1038189816123-qq786mscjhjp3i3l63s790h8us2jt0iu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

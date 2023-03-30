@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/Inscription.dart';
 import 'package:pprojet/Pages/color.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 
 class LoginPage extends StatefulWidget {
@@ -11,7 +14,47 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
+
 class _LoginPageState extends State<LoginPage> {
+
+  final formKey = GlobalKey<FormState>();
+  final autentification = FirebaseAuth.instance;
+  final emailController = TextEditingController();
+  final mdpController = TextEditingController();
+  bool isTextFieldEmpty = false;
+
+ void initState(){
+   super.initState();
+   mdpController.addListener(() {
+     setState(() {
+       isTextFieldEmpty = mdpController.text.isEmpty;
+     });
+   });
+   emailController.addListener(() {
+     setState(() {
+       isTextFieldEmpty = emailController.text.isEmpty;
+     });
+   });
+   User? user = null;
+ }
+
+  Future<bool> login(String email, String password) async {
+    try {
+      UserCredential user = await autentification.signInWithEmailAndPassword(
+          email: emailController.text,
+          password: mdpController.text,
+      );
+      // Connexion réussie, redirigez l'utilisateur vers une autre page
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('Aucun utilisateur trouvé pour cet e-mail.');
+      } else if (e.code == 'wrong-password') {
+        print('Mauvais mot de passe.');
+      }
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                       children: <Widget>[
                         TextFormField(
-                          controller: TextEditingController(),
+                          controller: emailController,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(7),
@@ -72,14 +115,14 @@ class _LoginPageState extends State<LoginPage> {
                       ]
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Form(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         TextFormField(
-                          controller: TextEditingController(),
+                          controller: mdpController,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(7),
@@ -104,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                       ]
                   ),
                 ),
-                SizedBox(height: 70),
+                const SizedBox(height: 70),
                 SizedBox(height: 68, width: 320,
                 child :
                 ElevatedButton(
@@ -115,15 +158,19 @@ class _LoginPageState extends State<LoginPage> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical:25)
                     ),
                     child: Text('Se connecter'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Accueil()),
-                      );
+                    onPressed: isTextFieldEmpty ? null : () async {
+                      bool loggedIn = await login(emailController.text, mdpController.text);
+                      if (loggedIn) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Accueil()),
+                        );
+                      } else {
+                        // Show an error message to the user or handle the failed login as needed
+                      }
                     }
-                 ),
-                ),
-                SizedBox(height: 10),
+                  )),
+                const SizedBox(height: 10),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: color_3,
@@ -133,12 +180,12 @@ class _LoginPageState extends State<LoginPage> {
                         const EdgeInsets.symmetric(horizontal: 79, vertical:25)
                     ),
                     child: const Text('Créer un nouveau compte'),
-                    onPressed: () {
+                      onPressed: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Inscription()),
+                      context,
+                      MaterialPageRoute(builder: (context) => Inscription()),
                       );
-                    }
+                      }
                 ),
               ]
           ),
