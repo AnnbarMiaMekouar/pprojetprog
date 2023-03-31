@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pprojet/Pages/color.dart';
 
-class Whishlistvide extends StatelessWidget {
+class Likesvides extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class Whishlistvide extends StatelessWidget {
         children: [
           Center(
             child: SvgPicture.asset(
-              'assets/images/empty_whishlist.svg', // remplacez `your_image_name.svg` par le nom de votre image
+              'assets/images/empty_likes.svg', // remplacez `your_image_name.svg` par le nom de votre image
               width: 200,
               height: 200,
             ),

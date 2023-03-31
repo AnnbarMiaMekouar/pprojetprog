@@ -32,8 +32,8 @@ class _DetailsJeuxState extends State<DetailsJeux> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: color_3,
-          title: Text("Détail du jeu"),
+        backgroundColor: color_3,
+        title: Text("Détail du jeu"),
         titleSpacing: 0,
         actions: [
           IconButton(
