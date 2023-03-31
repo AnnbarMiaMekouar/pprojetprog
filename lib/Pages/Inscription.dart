@@ -1,7 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pprojet/Pages/Accueil.dart';
-import 'package:pprojet/Pages/color.dart';
+import 'accueil.dart';
+import 'color.dart';
+
+
+//https://firebase.google.com/docs/auth/flutter/password-auth
+
 
 class Inscription extends StatefulWidget {
   const Inscription({Key? key}) : super(key: key);
@@ -13,12 +17,12 @@ class Inscription extends StatefulWidget {
 }
 
 class _InscriptionState extends State<Inscription> {
-  final formKey = GlobalKey<FormState>();
-  final autentification = FirebaseAuth.instance;
-  final TextEditingController nomUtilisateurController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController motDePasseController = TextEditingController();
-  final TextEditingController verifMotDePasseController = TextEditingController();
+
+  final nomUtilisateurController = TextEditingController();
+  final emailController = TextEditingController();
+  final verifMotDePasseController = TextEditingController();
+  final motDePasseController = TextEditingController();
+
   bool isTextFieldEmpty = false;
 
   void initState(){
@@ -43,27 +47,33 @@ class _InscriptionState extends State<Inscription> {
         isTextFieldEmpty = verifMotDePasseController.text.isEmpty;
       });
     });
-}
-  Future<bool> createUser(String email, String password) async {
+  }
+
+  void _showSnackBar(String message) {
+    final snackBar = SnackBar(content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  Future<User?> createAccount( { required String nom, required String email, required String motdepasse,})
+  async {
     try {
-      await autentification.createUserWithEmailAndPassword(
-          email: email, password: password);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Accueil()),
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: motdepasse,
       );
-      return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('Le mot de passe est trop faible.');
+        print('Le mot de passe n est pas assez long ');
+
       } else if (e.code == 'email-already-in-use') {
-        print('L\'e-mail est déjà utilisé.');
+        print('Il existe deja un compte associé a cette adresse mail');
+
       }
-      return false;
     } catch (e) {
+      isTextFieldEmpty = true;
       print(e);
-      return false;
     }
+    isTextFieldEmpty = false;
   }
   @override
   Widget build(BuildContext context) {
@@ -227,18 +237,14 @@ class _InscriptionState extends State<Inscription> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 29, vertical: 10)),
                         child: Text('Inscription'),
-                        onPressed: isTextFieldEmpty
-                            ? null
-                            : () async {
-                          bool result = await createUser(
-                              emailController.text, motDePasseController.text);
-                          if (result) {
+                        onPressed:  () async {
+                          if(isTextFieldEmpty == false){
+                            createAccount(email : emailController.text, motdepasse : verifMotDePasseController.text, nom: nomUtilisateurController.text, );
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Accueil()),
-                            );
-                          } else {
-                            // Gérer l'échec de l'inscription ici, par exemple en affichant un message d'erreur
+                              MaterialPageRoute(builder: (context) => Accueil()),);
+                          }else{
+                            _showSnackBar("La création du compte a échoué. Veuillez vérifier vos identifiants et réessayer.");
                           }
                         },
                       ),

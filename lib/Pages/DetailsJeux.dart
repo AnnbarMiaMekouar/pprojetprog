@@ -56,9 +56,113 @@ class _DetailsJeuxState extends State<DetailsJeux> {
           ),
         ],
       ),
-      body: Center(
-        child: Text("Contenu de la page Détail du jeu"),
+      body: Container (
+        color: color_3,
+      child : Column (
+        children: [
+          Expanded(
+            flex: 5,
+            child: Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/images/Bitmap-2.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Column (
+                  children : [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 100, horizontal: 150),
+                  ),
+                    Card(
+                    child: Container(
+
+                        width: 360,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius : BorderRadius.circular(5),
+                          color: Colors.black38,
+                        ),
+                        child: ListTile(
+                          leading: Image.asset(
+                              '',
+                              width: 50),
+                          title: Text(''),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(''),
+                              Text(''),
+                            ],
+                          ),
+                          trailing : SizedBox(
+                            width: 90.0,
+                            height: 50.0,
+                          ),
+                        )
+                    )
+                ),
+          ]
+                )
+              ],
+            ),
+          ),
+        Container(
+            color: Colors.blue,
+          child : Padding(
+            padding: EdgeInsets.symmetric(vertical: 100, horizontal: 150),
+
+
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      color: Colors.black,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Texte gauche 1',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                          Text(
+                            'Texte gauche 2',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      color: Colors.blue,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Texte droite 1',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                          Text(
+                            'Texte droite 2',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                    )
+                    ),
+          ]
+              ),
+          ) ),
+          ]
+
       ),
+      )
     );
   }
 }
