@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pprojet/Pages/DetailsJeux.dart';
 import 'package:pprojet/Pages/WhishList.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'package:pprojet/Pages/Recherche.dart';
@@ -141,7 +142,7 @@ class _AccueilState extends State<Accueil> {
                                   onPressed: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => WhishList()),
+                                      MaterialPageRoute(builder: (context) => DetailsJeux()),
                                     );
                                   }
                               )
@@ -205,7 +206,7 @@ class _AccueilState extends State<Accueil> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => WhishList()),
+                                    MaterialPageRoute(builder: (context) => DetailsJeux()),
                                   );
                                 },
                               ),
@@ -248,7 +249,7 @@ class _AccueilState extends State<Accueil> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => WhishList()),
+                                    MaterialPageRoute(builder: (context) => DetailsJeux()),
                                   );
                                 },
                               ),
@@ -291,7 +292,7 @@ class _AccueilState extends State<Accueil> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => WhishList()),
+                                    MaterialPageRoute(builder: (context) => DetailsJeux()),
                                   );
                                 },
                               ),
@@ -334,7 +335,7 @@ class _AccueilState extends State<Accueil> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => WhishList()),
+                                    MaterialPageRoute(builder: (context) => DetailsJeux()),
                                   );
                                 },
                               ),
@@ -377,7 +378,7 @@ class _AccueilState extends State<Accueil> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => WhishList()),
+                                    MaterialPageRoute(builder: (context) => DetailsJeux()),
                                   );
                                 },
                               ),
@@ -420,7 +421,7 @@ class _AccueilState extends State<Accueil> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => WhishList()),
+                                    MaterialPageRoute(builder: (context) => DetailsJeux()),
                                   );
                                 },
                               ),
@@ -463,7 +464,7 @@ class _AccueilState extends State<Accueil> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => WhishList()),
+                                    MaterialPageRoute(builder: (context) => DetailsJeux()),
                                   );
                                 },
                               ),

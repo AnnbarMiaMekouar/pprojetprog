@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/LoginPage.dart';
+import 'package:pprojet/Pages/DetailsJeux.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: DetailsJeux(),
     );
   }
 }
