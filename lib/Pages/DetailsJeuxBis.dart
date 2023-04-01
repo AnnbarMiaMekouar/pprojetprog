@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pprojet/Pages/DetailsJeux.dart';
 import 'package:pprojet/Pages/WhishList.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,277 +53,287 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
         ),
         body: Container (
             color: color_3,
-    child: SingleChildScrollView(
-    child : Column (
-                children: [
-                  Container(
-                    width: double.infinity,
-                    child: Stack(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            child: Image.asset(
-                              'assets/images/Bitmap-2.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Column (
-                              children : [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+            child: SingleChildScrollView(
+                child : Column (
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        child: Stack(
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                child: Image.asset(
+                                  'assets/images/Bitmap-2.png',
+                                  fit: BoxFit.cover,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 100, horizontal: 150),
-                                ),
-                                Card(
-                                    color: color_4,
-                                    child: Container(
+                              ),
+                              Column (
+                                  children : [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(vertical: 100, horizontal: 150),
+                                    ),
+                                    Card(
+                                        color: color_4,
+                                        child: Container(
+                                            width: 360,
+                                            height: 70,
+                                            decoration: BoxDecoration(
+                                              borderRadius : BorderRadius.circular(5),
+                                            ),
+                                            child: ListTile(
+                                              leading: Image.asset(
+                                                  '',
+                                                  width: 50),
+                                              title: Text(''),
+                                              subtitle: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Text(''),
+                                                  Text(''),
+                                                ],
+                                              ),
+                                              trailing : SizedBox(
+                                                width: 90.0,
+                                                height: 50.0,
+                                              ),
+                                            )
+                                        )
+                                    ),
+                                    SizedBox(height: 16.0),
+                                    Container(
+                                      height: 50.0, // définit la hauteur du container
+                                      width: 350.0, // définit la largeur du container
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) => DetailsJeux(),
+                                                  ),
+                                                );
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    color: color_2,
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius: BorderRadius.only(
+                                                    topLeft: Radius.circular(5.0),
+                                                    bottomLeft: Radius.circular(5.0),
+                                                  ),
+                                                  color: color_1,
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    'DESCRIPTION',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: color_2,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius: BorderRadius.only(
+                                                  topRight: Radius.circular(5.0),
+                                                  bottomRight: Radius.circular(5.0),
+                                                ),
+                                                color: color_2,
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  'AVIS',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 16.0),
+                                    Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
+                                      ),
+                                      color: color_4,
+                                      child: Container(
                                         width: 360,
-                                        height: 70,
-                                        decoration: BoxDecoration(
-                                          borderRadius : BorderRadius.circular(5),
-                                        ),
+                                        height: 90,
                                         child: ListTile(
-                                          leading: Image.asset(
-                                              '',
-                                              width: 50),
-                                          title: Text(''),
+                                          title: Text('Titre de la card'),
                                           subtitle: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: <Widget>[
-                                              Text(''),
-                                              Text(''),
+                                              Text('Description de la card'),
+                                              Text('Autre information'),
                                             ],
                                           ),
-                                          trailing : SizedBox(
-                                            width: 90.0,
-                                            height: 50.0,
-                                          ),
-                                        )
-                                    )
-                                ),
-                                SizedBox(height: 16.0),
-                                Container(
-                                  height: 50.0, // définit la hauteur du container
-                                  width: 350.0, // définit la largeur du container
-                                  child: Row(
-                                    children: [
-                                  Expanded(
-                                  child: Container(
-                                  decoration: BoxDecoration(
-                                  border: Border.all(
-                                  color: color_2,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(5.0),
-                                    bottomLeft: Radius.circular(5.0),
-                                  ),
-                                    color: color_1,
-                                ),
-                                    child: Center(
-                child: Text(
-                  'DESCRIPTION',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-        ),
-      Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: color_2,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(5.0),
-                bottomRight: Radius.circular(5.0),
-              ),
-              color: color_2,
-            ),
-            child: Center(
-              child: Text(
-                'AVIS',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-                                            ),
+                                          trailing: Container(
+                                            width: 50.0,
+                                            height: 8.0,
+                                            child: SvgPicture.asset('assets/images/Group 10.svg'),
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(height: 16.0),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  color: color_4,
-                                  child: Container(
-                                    width: 360,
-                                    height: 90,
-                                    child: ListTile(
-                                      title: Text('Titre de la card'),
-                                      subtitle: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text('Description de la card'),
-                                          Text('Autre information'),
-                                        ],
-                                      ),
-                                      trailing: Container(
-                                        width: 50.0,
-                                        height: 8.0,
-                                        child: SvgPicture.asset('assets/images/Group 10.svg'),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                SizedBox(height: 2.0),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  color: color_4,
-                                  child: Container(
-                                    width: 360,
-                                    height: 90,
-                                    child: ListTile(
-                                      title: Text('Titre de la card'),
-                                      subtitle: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text('Description de la card'),
-                                          Text('Autre information'),
-                                        ],
+                                    SizedBox(height: 2.0),
+                                    Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
                                       ),
-                                      trailing: Container(
-                                        width: 50.0,
-                                        height: 8.0,
-                                        child: SvgPicture.asset('assets/images/Group 10.svg'),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 2.0),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  color: color_4,
-                                  child: Container(
-                                    width: 360,
-                                    height: 90,
-                                    child: ListTile(
-                                      title: Text('Titre de la card'),
-                                      subtitle: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text('Description de la card'),
-                                          Text('Autre information'),
-                                        ],
-                                      ),
-                                      trailing: Container(
-                                        width: 50.0,
-                                        height: 8.0,
-                                        child: SvgPicture.asset('assets/images/Group 10.svg'),
+                                      color: color_4,
+                                      child: Container(
+                                        width: 360,
+                                        height: 90,
+                                        child: ListTile(
+                                          title: Text('Titre de la card'),
+                                          subtitle: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text('Description de la card'),
+                                              Text('Autre information'),
+                                            ],
+                                          ),
+                                          trailing: Container(
+                                            width: 50.0,
+                                            height: 8.0,
+                                            child: SvgPicture.asset('assets/images/Group 10.svg'),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                SizedBox(height: 2.0),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  color: color_4,
-                                  child: Container(
-                                    width: 360,
-                                    height: 90,
-                                    child: ListTile(
-                                      title: Text('Titre de la card'),
-                                      subtitle: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text('Description de la card'),
-                                          Text('Autre information'),
-                                        ],
+                                    SizedBox(height: 2.0),
+                                    Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
                                       ),
-                                      trailing: Container(
-                                        width: 50.0,
-                                        height: 8.0,
-                                        child: SvgPicture.asset('assets/images/Group 10.svg'),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 2.0),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  color: color_4,
-                                  child: Container(
-                                    width: 360,
-                                    height: 90,
-                                    child: ListTile(
-                                      title: Text('Titre de la card'),
-                                      subtitle: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text('Description de la card'),
-                                          Text('Autre information'),
-                                        ],
-                                      ),
-                                      trailing: Container(
-                                        width: 50.0,
-                                        height: 8.0,
-                                        child: SvgPicture.asset('assets/images/Group 10.svg'),
+                                      color: color_4,
+                                      child: Container(
+                                        width: 360,
+                                        height: 90,
+                                        child: ListTile(
+                                          title: Text('Titre de la card'),
+                                          subtitle: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text('Description de la card'),
+                                              Text('Autre information'),
+                                            ],
+                                          ),
+                                          trailing: Container(
+                                            width: 50.0,
+                                            height: 8.0,
+                                            child: SvgPicture.asset('assets/images/Group 10.svg'),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                SizedBox(height: 2.0),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  color: color_4,
-                                  child: Container(
-                                    width: 360,
-                                    height: 90,
-                                    child: ListTile(
-                                      title: Text('Titre de la card'),
-                                      subtitle: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text('Description de la card'),
-                                          Text('Autre information'),
-                                        ],
+                                    SizedBox(height: 2.0),
+                                    Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
                                       ),
-                                      trailing: Container(
-                                        width: 50.0,
-                                        height: 8.0,
-                                        child: SvgPicture.asset('assets/images/Group 10.svg'),
+                                      color: color_4,
+                                      child: Container(
+                                        width: 360,
+                                        height: 90,
+                                        child: ListTile(
+                                          title: Text('Titre de la card'),
+                                          subtitle: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text('Description de la card'),
+                                              Text('Autre information'),
+                                            ],
+                                          ),
+                                          trailing: Container(
+                                            width: 50.0,
+                                            height: 8.0,
+                                            child: SvgPicture.asset('assets/images/Group 10.svg'),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ]
-                          )
-                        ]
-                    ),
-                  )
-                ]
+                                    SizedBox(height: 2.0),
+                                    Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
+                                      ),
+                                      color: color_4,
+                                      child: Container(
+                                        width: 360,
+                                        height: 90,
+                                        child: ListTile(
+                                          title: Text('Titre de la card'),
+                                          subtitle: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text('Description de la card'),
+                                              Text('Autre information'),
+                                            ],
+                                          ),
+                                          trailing: Container(
+                                            width: 50.0,
+                                            height: 8.0,
+                                            child: SvgPicture.asset('assets/images/Group 10.svg'),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 2.0),
+                                    Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
+                                      ),
+                                      color: color_4,
+                                      child: Container(
+                                        width: 360,
+                                        height: 90,
+                                        child: ListTile(
+                                          title: Text('Titre de la card'),
+                                          subtitle: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text('Description de la card'),
+                                              Text('Autre information'),
+                                            ],
+                                          ),
+                                          trailing: Container(
+                                            width: 50.0,
+                                            height: 8.0,
+                                            child: SvgPicture.asset('assets/images/Group 10.svg'),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ]
+                              )
+                            ]
+                        ),
+                      )
+                    ]
+                )
             )
         )
-    )
     );
   }
 }
