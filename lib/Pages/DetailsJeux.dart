@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:pprojet/Pages/Accueil.dart';
+import 'package:pprojet/Pages/DetailsJeuxBis.dart';
 import 'package:pprojet/Pages/WhishList.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,17 +13,12 @@ class DetailsJeux extends StatefulWidget {
 
 class _DetailsJeuxState extends State<DetailsJeux> {
   final Widget heartImage = SvgPicture.asset(
-    'assets/images/like_full.svg',
+    'assets/images/like.svg',
     width: 20,
     height: 20,
   );
   final Widget starImage = SvgPicture.asset(
-    'assets/images/whishlist_full.svg',
-    width: 20,
-    height: 20,
-  );
-  final Widget backImage = SvgPicture.asset(
-    'assets/images/back.svg',
+    'assets/images/whishlist.svg',
     width: 20,
     height: 20,
   );
@@ -79,19 +74,17 @@ class _DetailsJeuxState extends State<DetailsJeux> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 100, horizontal: 150),
                   ),
+                    SizedBox(height: 0),
                     Card(
-                    child: Container(
-
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      color: color_4,
+                      child: Container(
                         width: 360,
                         height: 70,
-                        decoration: BoxDecoration(
-                          borderRadius : BorderRadius.circular(5),
-                          color: Colors.black38,
-                        ),
                         child: ListTile(
-                          leading: Image.asset(
-                              '',
-                              width: 50),
+                          leading: Image.asset('', width: 50),
                           title: Text(''),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,68 +93,112 @@ class _DetailsJeuxState extends State<DetailsJeux> {
                               Text(''),
                             ],
                           ),
-                          trailing : SizedBox(
+                          trailing: SizedBox(
                             width: 90.0,
                             height: 50.0,
                           ),
-                        )
-                    )
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    Container(
+                        height: 50.0, // définit la hauteur du container
+                        width: 350.0, // définit la largeur du container
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: color_2,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(5.0),
+                                  bottomLeft: Radius.circular(5.0),
+                                ),
+                                color: color_2,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'DESCRIPTION',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailsJeuxBis(),
+                                  ),
+                                );
+                                },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: color_2,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(5.0),
+                                    bottomRight: Radius.circular(5.0),
+                                  ),
+                                  color: color_1,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'AVIS',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      color: color_4,
+                      child: Container(
+                        width: 360,
+                        height: 100,
+                        child: ListTile(
+                          title: Text('Titre de la card'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text('Description de la card'),
+                              Text('Autre information'),
+                            ],
+                          ),
+                          trailing: SizedBox(
+                            width: 90.0,
+                            height: 50.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-          ]
-                )
-              ],
+              ]
             ),
-          ),
-        Container(
-            color: Colors.blue,
-          child : Padding(
-            padding: EdgeInsets.symmetric(vertical: 100, horizontal: 150),
-
-
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      color: Colors.black,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Texte gauche 1',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                          Text(
-                            'Texte gauche 2',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      color: Colors.blue,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Texte droite 1',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                          Text(
-                            'Texte droite 2',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
-                      ),
-                    )
-                    ),
-          ]
-              ),
-          ) ),
-          ]
-
-      ),
+          )
+        ]
+      )
       )
     );
   }
