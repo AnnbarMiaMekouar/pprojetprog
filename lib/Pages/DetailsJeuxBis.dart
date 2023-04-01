@@ -23,6 +23,7 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
     height: 20,
   );
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/DetailsJeux.dart';
 import 'package:pprojet/Pages/WhishList.dart';
+import 'package:pprojet/Pages/accueil.dart';
 import 'package:pprojet/Pages/color.dart';
 
 
@@ -21,9 +22,10 @@ class _RechercheState extends State<Recherche> {
     width: 32,
     height: 32,
   );
-  final Image loupeImage = Image.asset('assets/images/search.png',
-    width: 32,
-    height: 32,
+  final Image backImage = Image.asset(
+    'assets/images/icons8-close.png',
+    width: 20,
+    height: 20,
   );
 
   Widget buildListTile(int index) {
@@ -77,10 +79,19 @@ class _RechercheState extends State<Recherche> {
     return Scaffold(
         backgroundColor: color_1,
         appBar: AppBar(
+          leading: IconButton(
+            icon: ImageIcon(backImage.image),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Accueil()),
+              );
+            },
+          ),
           title: const Text('Recherche'),
           backgroundColor: color_1,
           automaticallyImplyLeading: false,
-          titleSpacing: 15,
+          titleSpacing: 0,
           actions: [
             IconButton(
               icon: ImageIcon(heartImage.image),

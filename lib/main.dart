@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:pprojet/Pages/Accueil.dart';
-import 'package:pprojet/Pages/DetailsJeux.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pprojet/Pages/Accueil.dart';
+
 
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 
