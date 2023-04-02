@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/color.dart';
 
 class Whishlistvide extends StatelessWidget {
@@ -14,7 +15,12 @@ class Whishlistvide extends StatelessWidget {
               width: 20,
               height: 20,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Accueil()),
+                  );
+                },
                 child: SvgPicture.asset(
                   'assets/images/close.svg',
                 ),

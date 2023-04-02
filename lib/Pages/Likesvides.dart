@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/color.dart';
 
 class Likesvides extends StatelessWidget {
@@ -14,14 +15,19 @@ class Likesvides extends StatelessWidget {
               width: 20,
               height: 20,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Accueil()),
+                  );
+                },
                 child: SvgPicture.asset(
                   'assets/images/close.svg',
                 ),
               ),
             ),
             SizedBox(width: 15), // Ajoutez cette ligne pour décaler le texte de 7 pixels
-            Text("Ma liste de souhaits"),
+            Text("Mes likes"),
           ],
         ),
       ),

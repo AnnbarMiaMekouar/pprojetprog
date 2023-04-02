@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/DetailsJeux.dart';
-import 'package:pprojet/Pages/WhishList.dart';
+import 'package:pprojet/Pages/Likesvides.dart';
+import 'package:pprojet/Pages/Wishlistvide.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'package:pprojet/Pages/Recherche.dart';
 import 'dart:convert';
@@ -69,7 +70,7 @@ class _AccueilState extends State<Accueil> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WhishList()),
+                  MaterialPageRoute(builder: (context) => Likesvides()),
                 );
               },
             ),
@@ -78,7 +79,7 @@ class _AccueilState extends State<Accueil> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WhishList()),
+                  MaterialPageRoute(builder: (context) => Whishlistvide()),
                 );
               },
             ),
