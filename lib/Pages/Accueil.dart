@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/DetailsJeux.dart';
 import 'package:pprojet/Pages/Likesvides.dart';
+import 'package:pprojet/Pages/Recherche.dart';
 import 'package:pprojet/Pages/Wishlistvide.dart';
 import 'package:pprojet/Pages/color.dart';
-import 'package:pprojet/Pages/Recherche.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -25,6 +25,7 @@ class Jeu {
 }
 
 class _AccueilState extends State<Accueil> {
+  TextEditingController _searchController = TextEditingController();
   late Future<List<Jeu>> _futurejeux;
 
 //Initialisation
@@ -91,6 +92,7 @@ class _AccueilState extends State<Accueil> {
         padding:
         EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: TextField(
+            controller: _searchController,
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(7),
@@ -114,8 +116,7 @@ class _AccueilState extends State<Accueil> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>
-                        Recherche()), // Remplacez OtherPage() par le nom de la page vers laquelle vous souhaitez naviguer
+                    MaterialPageRoute(builder: (context) => Recherche(query: _searchController.text)),
                   );
                 },
                 child: Image.asset(
@@ -133,8 +134,8 @@ class _AccueilState extends State<Accueil> {
               Image.asset(
                 'assets/images/imageacceuil.png',
                 width: double.infinity,
-                fit: BoxFit.cover,
                 height: 200,
+                fit: BoxFit.cover,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -173,7 +174,7 @@ class _AccueilState extends State<Accueil> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    DetailsJeux()),
+                                    DetailsJeux(appid: 570)),
                           );
                         }
                     ),
@@ -272,55 +273,91 @@ class _AccueilState extends State<Accueil> {
               final jeu = jeux[index];
               return Card(
                 child: Container(
+                  width: double.infinity,
+                  height: 100.0,
                   color: color_3,
-                  child: ListTile(
-                    leading: Image.network(
-                        jeu.image, width: 100),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(jeu.nom, style: TextStyle(fontSize: 15,
-                          color: Colors.white,)),
-                        Text(jeu.auteur.first, style: TextStyle(
-                          fontSize: 13, color: Colors.white,)),
-                        Row(
-                          children: [
-                            Text("Prix: ",
-                              style: TextStyle(fontSize: 13,
-                                  color: Colors.white,
-                                  decoration: TextDecoration.underline),),
-                            Text(jeu.prix, style: TextStyle(
-                              fontSize: 12, color: Colors.white,)),
-                          ],
-                        )
-                      ],
-                    ),
-
-                    trailing: SizedBox(
-                      width: 100.0,
-                      height: 150.0,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          backgroundColor: color_2,
-                          padding: const EdgeInsets.all(2),
-                          textStyle: const TextStyle(fontSize: 18),
-                        ),
-                        child: const Text(
-                          'En savoir plus',
-                          textAlign: TextAlign.center,
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailsJeux()),
-                          );
-                        },
+                  child: Row(
+                    children: [
+                      Image.network(
+                        jeu.image,
+                        width: 100,
+                        height: 100,
                       ),
-                    ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(height: 15),
+                              Text(
+                                jeu.nom,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                jeu.auteur.first,
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(height: 5),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    "Prix: ",
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.white,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                  Text(
+                                    jeu.prix,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 100.0,
+                        height: 100.0,
+                        alignment: Alignment.centerRight, // Alignement personnalisé
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            backgroundColor: color_2,
+                            padding: const EdgeInsets.all(2),
+                            textStyle: const TextStyle(fontSize: 18),
+                          ),
+                          child: const Text(
+                            'En savoir plus',
+                            textAlign: TextAlign.center,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsJeux(appid: jeu.Id),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               );

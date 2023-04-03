@@ -43,6 +43,7 @@ dependencies:
   firebase_auth_helper: ^2.1.0
   flutter_svg: ^0.22.0
   http: ^0.13.5
+  html: ^0.15.0
 
 dev_dependencies:
   flutter_test:
