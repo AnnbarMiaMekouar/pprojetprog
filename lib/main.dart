@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:pprojet/Pages/Accueil.dart';
-import 'package:pprojet/Pages/DetailsJeuxBis.dart';
+
+import 'package:pprojet/Pages/LoginPage.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DetailsJeuxBis(appid: 570,),
+      home: const LoginPage(),
     );
   }
 }

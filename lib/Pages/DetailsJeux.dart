@@ -132,7 +132,7 @@ class _DetailsJeuxState extends State<DetailsJeux> {
                       color: color_4,
                       child: Container(
                         width: 360,
-                        height: 70,
+                        height: 90,
                         child: ListTile(
                           leading: Image.network(
                             jeu.image,
@@ -241,57 +241,6 @@ class _DetailsJeuxState extends State<DetailsJeux> {
                           trailing: SizedBox(
                             width: 90.0,
                             height: 50.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 2.0),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      color: color_4,
-                      child: Container(
-                        width: 360,
-                        height: 90,
-                        child: ListTile(
-                          title: Text('Titre de la card'),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text('Description de la card'),
-                              Text('Autre information'),
-                            ],
-                          ),
-                          trailing: SizedBox(
-                            width: 90.0,
-                            height: 50.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 2.0),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      color: color_4,
-                      child: Container(
-                        width: 360,
-                        height: 90,
-                        child: ListTile(
-                          title: Text(jeu.nom),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text('Description de la card'),
-                            ],
-                          ),
-                          trailing: Container(
-                            width: 50.0,
-                            height: 8.0,
-                            child: SvgPicture.asset(
-                                'assets/images/Group 10.svg'),
                           ),
                         ),
                       ),

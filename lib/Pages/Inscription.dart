@@ -77,182 +77,198 @@ class _InscriptionState extends State<Inscription> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/Backgroud.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: 7),
-                    Text(
-                      'Inscription !',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+    return Scaffold( body: SafeArea (
+        child : LayoutBuilder (
+            builder: (BuildContext context, BoxConstraints viewportConstraints) {
+              return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: viewportConstraints.maxHeight,
                     ),
-                    Text(
-                      '\nVeuillez saisir ces différentes informations, \n afin que vos listes soient sauvegardées. ',
-                      style: TextStyle(
-                        fontSize: 19,
-                        color: Colors.white,
+                    child : Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/Backgroud.jpg'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 20),
-                    Form(
-                      child: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            controller: nomUtilisateurController,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(7),
-                                borderSide: BorderSide(
-                                  color: Colors.blueGrey.shade900,
+                      child: Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              SizedBox(height: 7),
+                              Text(
+                                'Inscription !',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
                                 ),
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                  width: 1.0,
+                              Text(
+                                '\nVeuillez saisir ces différentes informations, \n afin que vos listes soient sauvegardées. ',
+                                style: TextStyle(
+                                  fontSize: 19,
+                                  color: Colors.white,
                                 ),
                               ),
-                              filled: true,
-                              fillColor: Colors.blueGrey.shade900,
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
-                              border: const OutlineInputBorder(),
-                              hintText: 'Nom Utilisateur',
-                              hintStyle: const TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Form(
-                      child: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            controller: emailController,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(7),
-                                borderSide: BorderSide(
-                                  color: Colors.blueGrey.shade900,
+                              SizedBox(height: 20),
+                              Form(
+                                child: Column(
+                                  children: <Widget>[
+                                    TextFormField(
+                                      controller: nomUtilisateurController,
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(7),
+                                          borderSide: BorderSide(
+                                            color: Colors.blueGrey.shade900,
+                                          ),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.black,
+                                            width: 1.0,
+                                          ),
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.blueGrey.shade900,
+                                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                                        border: const OutlineInputBorder(),
+                                        hintText: 'Nom Utilisateur',
+                                        hintStyle: const TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                  width: 1.0,
+                              SizedBox(height: 20),
+                              Form(
+                                child: Column(
+                                  children: <Widget>[
+                                    TextFormField(
+                                      controller: emailController,
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(7),
+                                          borderSide: BorderSide(
+                                            color: Colors.blueGrey.shade900,
+                                          ),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.black,
+                                            width: 1.0,
+                                          ),
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.blueGrey.shade900,
+                                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                                        border: const OutlineInputBorder(),
+                                        hintText: 'E-mail',
+                                        hintStyle: const TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              filled: true,
-                              fillColor: Colors.blueGrey.shade900,
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
-                              border: const OutlineInputBorder(),
-                              hintText: 'E-mail',
-                              hintStyle: const TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Form(
-                        child: Column(children: <Widget>[
-                          TextFormField(
-                            controller: TextEditingController(),
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(7),
-                                borderSide: BorderSide(
-                                  color: Colors.blueGrey.shade900,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                    width: 1.0,
+                              SizedBox(height: 20),
+                              Form(
+                                  child: Column(children: <Widget>[
+                                    TextFormField(
+                                      controller: TextEditingController(),
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(7),
+                                          borderSide: BorderSide(
+                                            color: Colors.blueGrey.shade900,
+                                          ),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.red,
+                                              width: 1.0,
+                                            )
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.blueGrey.shade900,
+                                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                                        border: const OutlineInputBorder(),
+                                        hintText: 'Mot de passe',
+                                        hintStyle: const TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ]
                                   )
                               ),
-                              filled: true,
-                              fillColor: Colors.blueGrey.shade900,
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
-                              border: const OutlineInputBorder(),
-                              hintText: 'Mot de passe',
-                              hintStyle: const TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ]
-                        )
-                    ),
 
-                    SizedBox(height: 20),
-                    Form(
-                      child: Column(children: <Widget>[
-                        TextFormField(
-                          controller: verifMotDePasseController,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(7),
-                              borderSide: BorderSide(
-                                color: Colors.blueGrey.shade900,
+                              SizedBox(height: 20),
+                              Form(
+                                child: Column(children: <Widget>[
+                                  TextFormField(
+                                    controller: verifMotDePasseController,
+                                    decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(7),
+                                        borderSide: BorderSide(
+                                          color: Colors.blueGrey.shade900,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.black,
+                                            width: 1.0,
+                                          )
+                                      ),
+                                      filled: true,
+                                      fillColor: Colors.blueGrey.shade900,
+                                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                                      border: const OutlineInputBorder(),
+                                      hintText: 'Verification du mot de passe',
+                                      hintStyle: const TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ]
+                                ),
                               ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                  width: 1.0,
-                                )
-                            ),
-                            filled: true,
-                            fillColor: Colors.blueGrey.shade900,
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            border: const OutlineInputBorder(),
-                            hintText: 'Verification du mot de passe',
-                            hintStyle: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ]
-                      ),
-                    ),
-                    SizedBox(height: 68),
-                    SizedBox(
+                              SizedBox(height: 68),
+                              SizedBox(
 
-                      height: 68,
-                      width: 320,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: color_2,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 29, vertical: 10)),
-                        child: Text('Inscription'),
-                        onPressed:  () async {
-                          if(isTextFieldEmpty == false){
-                            createAccount(email : emailController.text, motdepasse : verifMotDePasseController.text, nom: nomUtilisateurController.text, );
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Accueil()),);
-                          }else{
-                            _showSnackBar("La création du compte a échoué. Veuillez vérifier vos identifiants et réessayer.");
-                          }
-                        },
+                                height: 68,
+                                width: 320,
+                                child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: color_2,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 29, vertical: 10)),
+                                    child: Text('Inscription'),
+                                    onPressed:  () async {
+                                      if (isTextFieldEmpty == false) {
+                                        createAccount(email: emailController.text,
+                                          motdepasse: verifMotDePasseController.text,
+                                          nom: nomUtilisateurController.text,);
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Accueil()),);
+                                      } else {
+                                        _showSnackBar(
+                                            "La création du compte a échoué. Veuillez vérifier vos identifiants et réessayer.");
+                                      }
+                                    }
+                                ),
+                              )
+                            ]
+                        ),
                       ),
                     ),
-                  ]
-              ),
-            )
+                  )
+              );
+            }
         )
+    )
     );
   }
 }

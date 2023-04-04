@@ -271,6 +271,7 @@ class _AccueilState extends State<Accueil> {
             itemCount: jeux.length,
             itemBuilder: (context, index) {
               final jeu = jeux[index];
+              SizedBox(height : 7);
               return Card(
                 child: Container(
                   width: double.infinity,
