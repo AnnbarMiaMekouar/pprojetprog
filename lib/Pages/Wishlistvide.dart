@@ -27,7 +27,7 @@ class Whishlistvide extends StatelessWidget {
               ),
             ),
             SizedBox(width: 15), // Ajoutez cette ligne pour décaler le texte de 7 pixels
-            Text("Ma liste de souhaits"),
+            Text("Mes likes"),
           ],
         ),
       ),

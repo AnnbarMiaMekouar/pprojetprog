@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/DetailsJeux.dart';
-import 'package:pprojet/Pages/Likesvides.dart';
-import 'package:pprojet/Pages/Wishlistvide.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -57,29 +56,18 @@ class _RechercheState extends State<Recherche> {
         backgroundColor: color_1,
         appBar: AppBar(
           title: const Text('Recherche'),
+          leading: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Accueil()),
+              );
+            },
+          ),
           backgroundColor: color_1,
           automaticallyImplyLeading: false,
           titleSpacing: 15,
-          actions: [
-            IconButton(
-              icon: ImageIcon(heartImage.image),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Likesvides()),
-                );
-              },
-            ),
-            IconButton(
-              icon: ImageIcon(starImage.image),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Whishlistvide()),
-                );
-              },
-            ),
-          ],
         ),
         body: Column(
             children: [
