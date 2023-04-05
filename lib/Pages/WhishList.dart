@@ -29,21 +29,20 @@ class _WhishListState extends State<WhishList> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: color_1,
-      appBar: AppBar(
-        title: const Text('Ma liste de souhait'),
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Accueil()),
-            );
-          },
+        appBar: AppBar(
+          backgroundColor: color_3,
+          leading: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Accueil()),
+              );
+            },
+          ),
+          title :  // Ajoutez cette ligne pour décaler le texte de 7 pixels
+          Text("Mes likes"),
         ),
-        backgroundColor: color_1,
-        automaticallyImplyLeading: false,
-        titleSpacing: 15,
-      ),
         body : buildWishList()
     );
   }

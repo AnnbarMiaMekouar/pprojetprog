@@ -9,27 +9,17 @@ class Likesvides extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: color_3,
-        title: Row(
-          children: [
-            SizedBox(
-              width: 20,
-              height: 20,
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Accueil()),
-                  );
-                },
-                child: SvgPicture.asset(
-                  'assets/images/close.svg',
-                ),
-              ),
-            ),
-            SizedBox(width: 15), // Ajoutez cette ligne pour décaler le texte de 7 pixels
-            Text("Mes likes"),
-          ],
+        leading: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Accueil()),
+            );
+          },
         ),
+            title :  // Ajoutez cette ligne pour décaler le texte de 7 pixels
+            Text("Mes likes"),
       ),
       backgroundColor: color_3,
       body: Column(

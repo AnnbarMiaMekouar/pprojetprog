@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/DetailsJeuxBis.dart';
 import 'package:pprojet/Pages/WhishList.dart';
 import 'package:pprojet/Pages/color.dart';
@@ -55,6 +56,15 @@ class _DetailsJeuxState extends State<DetailsJeux> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: color_3,
+          leading: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Accueil()),
+              );
+            },
+          ),
           title: Text("Détail du jeu"),
           titleSpacing: 0,
           actions: [
