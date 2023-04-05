@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pprojet/Pages/WhishList.dart';
 import 'package:pprojet/Pages/Wishlistvide.dart';
 
 void main() async{
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Whishlistvide(),
+      home: WhishList(),
     );
   }
 }

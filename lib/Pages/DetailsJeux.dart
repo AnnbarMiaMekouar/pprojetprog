@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/DetailsJeuxBis.dart';
-import 'package:pprojet/Pages/WhishList.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:convert';
@@ -19,10 +18,11 @@ class Jeu {
   final int Id;
   final String nom;
   final String image;
+  final String description;
   final List<dynamic> auteur;
 
 
-  Jeu({required this.Id, required this.nom, required this.auteur,required this.image});
+  Jeu({required this.Id, required this.nom, required this.auteur,required this.image, required this.description});
 }
 
 class _DetailsJeuxState extends State<DetailsJeux> {
@@ -50,6 +50,19 @@ class _DetailsJeuxState extends State<DetailsJeux> {
     width: 20,
     height: 20,
   );
+  final Widget heartFull = SvgPicture.asset(
+    'assets/images/like_full.svg',
+    width: 20,
+    height: 20,
+  );
+  final Widget starFull = SvgPicture.asset(
+    'assets/images/whishlist_full.svg',
+    width: 20,
+    height: 20,
+  );
+
+  bool click1 = true;
+  bool click2 = true;
 
   @override
   Widget build(BuildContext context) {
@@ -70,24 +83,20 @@ class _DetailsJeuxState extends State<DetailsJeux> {
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>
-                      WhishList()), // Remplacez OtherPage() par le nom de la page vers laquelle vous souhaitez naviguer
-                );
+                setState ((){
+                  click1 =!click1;
+                });
               },
-              icon: heartImage,
+              icon: (click1 == true ) ? heartImage :  heartFull
             ),
             IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>
-                      WhishList()), // Remplacez OtherPage() par le nom de la page vers laquelle vous souhaitez naviguer
-                );
-              },
-              icon: starImage,
-            ),
+            onPressed: () {
+            setState ((){
+            click2 =!click2;
+            });
+            },
+            icon: (click2 == true ) ? starImage :  starFull
+            )
           ],
         ),
         body: Container(
@@ -149,11 +158,15 @@ class _DetailsJeuxState extends State<DetailsJeux> {
                             width: 100,
                             height: 100,
                           ),
-                          title: Text(jeu.nom),
+                          title: Text(jeu.nom,
+                          style: TextStyle(
+                              color : Colors.white) ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(jeu.auteur.first),
+                              Text(jeu.auteur.first,
+                                  style: TextStyle(
+                                      color : Colors.white) ),
                             ],
                           ),
                           trailing: SizedBox(
@@ -238,19 +251,18 @@ class _DetailsJeuxState extends State<DetailsJeux> {
                       color: color_4,
                       child: Container(
                         width: 360,
-                        height: 90,
+                        height: 200,
                         child: ListTile(
-                          title: Text('Titre de la card'),
+                          title: Text(jeu.nom, style: TextStyle(
+                              color : Colors.white) ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text('Description de la card'),
-                              Text('Autre information'),
+                              Text(jeu.description,
+                                  style: TextStyle(
+                                  color : Colors.white,
+                                      fontSize: 14) ),
                             ],
-                          ),
-                          trailing: SizedBox(
-                            width: 90.0,
-                            height: 50.0,
                           ),
                         ),
                       ),
@@ -282,9 +294,10 @@ class _DetailsJeuxState extends State<DetailsJeux> {
       if (jsonResponse != null) {
         final String nom = jsonResponse['name'];
         final String image = jsonResponse['header_image'];
+        final String description = jsonResponse['short_description'];
         final List<dynamic> auteur = jsonResponse['publishers'];
 
-        final Jeu jeu = Jeu(Id: jeuId, nom: nom, auteur: auteur, image: image);
+        final Jeu jeu = Jeu(Id: jeuId, nom: nom, auteur: auteur, image: image, description: description);
         return jeu;
       }
     } else {

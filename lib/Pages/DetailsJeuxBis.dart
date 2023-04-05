@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/DetailsJeux.dart';
-import 'package:pprojet/Pages/Likesvides.dart';
-import 'package:pprojet/Pages/WhishList.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:convert';
@@ -41,15 +39,28 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
   }
 
   final Widget heartImage = SvgPicture.asset(
-    'assets/images/like_full.svg',
+    'assets/images/like.svg',
     width: 20,
     height: 20,
   );
   final Widget starImage = SvgPicture.asset(
+    'assets/images/whishlist.svg',
+    width: 20,
+    height: 20,
+  );
+  final Widget heartFull = SvgPicture.asset(
+    'assets/images/like_full.svg',
+    width: 20,
+    height: 20,
+  );
+  final Widget starFull = SvgPicture.asset(
     'assets/images/whishlist_full.svg',
     width: 20,
     height: 20,
   );
+
+  bool click1 = true;
+  bool click2 = true;
 
 
   @override
@@ -70,25 +81,21 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
         titleSpacing: 0,
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>
-                    Likesvides()), // Remplacez OtherPage() par le nom de la page vers laquelle vous souhaitez naviguer
-              );
-            },
-            icon: heartImage,
+              onPressed: () {
+                setState ((){
+                  click1 =!click1;
+                });
+              },
+              icon: (click1 == true ) ? heartImage :  heartFull
           ),
           IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>
-                    WhishList()), // Remplacez OtherPage() par le nom de la page vers laquelle vous souhaitez naviguer
-              );
-            },
-            icon: starImage,
-          ),
+              onPressed: () {
+                setState ((){
+                  click2 =!click2;
+                });
+              },
+              icon: (click2 == true ) ? starImage :  starFull
+          )
         ],
       ),
         body: Container(
