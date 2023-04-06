@@ -5,6 +5,9 @@ import 'package:pprojet/Pages/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 class DetailsJeux extends StatefulWidget {
   const DetailsJeux({Key? key, required this.appid}) : super(key: key);
@@ -14,6 +17,7 @@ class DetailsJeux extends StatefulWidget {
   @override
   _DetailsJeuxState createState() => _DetailsJeuxState();
 }
+
 class Jeu {
   final int Id;
   final String nom;
@@ -21,19 +25,34 @@ class Jeu {
   final String description;
   final List<dynamic> auteur;
 
-
-  Jeu({required this.Id, required this.nom, required this.auteur,required this.image, required this.description});
+  Jeu({required this.Id, required this.nom, required this.auteur, required this.image, required this.description});
 }
 
 class _DetailsJeuxState extends State<DetailsJeux> {
   late Future<Jeu> _futurejeux;
 
-//Initialisation
+  final DatabaseReference _likesRef = FirebaseDatabase.instanceFor(
+    app: Firebase.app(),
+    databaseURL: 'https://progmobile-745dc-default-rtdb.europe-west1.firebasedatabase.app',
+  ).ref().child('likes');
+
+  final DatabaseReference _starsRef = FirebaseDatabase.instanceFor(
+    app: Firebase.app(),
+    databaseURL: 'https://progmobile-745dc-default-rtdb.europe-west1.firebasedatabase.app',
+  ).ref().child('stars');
+
+
+  //Initialisation
   @override
   void initState() {
     super.initState();
     _futurejeux = _telechargerJeux(widget.appid);
+    _getInitialLikeState(widget.appid).then((_) {
+    });
+    _getInitialStarState(widget.appid).then((_) {
+    });
   }
+
 
   Future<Jeu> _telechargerJeux(int jeuIds) async {
     final jeux = await GetJeux(jeuIds);
@@ -64,6 +83,87 @@ class _DetailsJeuxState extends State<DetailsJeux> {
   bool click1 = true;
   bool click2 = true;
 
+  void _likeGame(int gameId) {
+    _likesRef.child(gameId.toString()).set({'liked': true}).then((_) {
+      print('Like enregistré avec succès');
+    }).catchError((error) {
+      print("Erreur lors de l'enregistrement du like : $error");
+    });
+  }
+
+  void _unlikeGame(int gameId) {
+    _likesRef.child(gameId.toString()).remove().then((_) {
+      print('Like supprimé avec succès');
+    }).catchError((error) {
+      print("Erreur lors de la suppression du like : $error");
+    });
+  }
+
+  void _starGame(int gameId) {
+    _starsRef.child(gameId.toString()).set({'starred': true}).then((_) {
+      print('Étoile enregistrée avec succès');
+    }).catchError((error) {
+      print("Erreur lors de l'enregistrement de l'étoile : $error");
+    });
+  }
+
+  void _unstarGame(int gameId) {
+    _starsRef.child(gameId.toString()).remove().then((_) {
+      print('Étoile supprimée avec succès');
+    }).catchError((error) {
+      print("Erreur lors de la suppression de l'étoile : $error");
+    });
+  }
+
+
+  Future<void> _getInitialLikeState(int gameId) async {
+    try {
+      _likesRef.child(gameId.toString()).once().then((DatabaseEvent event) {
+        DataSnapshot snapshot = event.snapshot;
+        if (snapshot.exists) {
+          setState(() {
+            click1 = false;
+          });
+        } else {
+          setState(() {
+            click1 = true;
+          });
+        }
+      }).catchError((error) {
+        print("Erreur lors de la récupération de l'état initial du like : $error");
+      });
+    } catch (error) {
+      print("Erreur lors de la récupération de l'état initial du like : $error");
+    }
+  }
+
+  Future<void> _getInitialStarState(int gameId) async {
+    try {
+      _starsRef.child(gameId.toString()).once().then((DatabaseEvent event) {
+        DataSnapshot snapshot = event.snapshot;
+        if (snapshot.exists) {
+          setState(() {
+            click2 = false;
+          });
+        } else {
+          setState(() {
+            click2 = true;
+          });
+        }
+      }).catchError((error) {
+        print("Erreur lors de la récupération de l'état initial de l'étoile : $error");
+      });
+    } catch (error) {
+      print("Erreur lors de la récupération de l'état initial de l'étoile : $error");
+    }
+  }
+
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,20 +183,31 @@ class _DetailsJeuxState extends State<DetailsJeux> {
           actions: [
             IconButton(
               onPressed: () {
-                setState ((){
-                  click1 =!click1;
+                setState(() {
+                  click1 = !click1;
                 });
+                if (click1) {
+                  _unlikeGame(widget.appid);
+                } else {
+                  _likeGame(widget.appid);
+                }
               },
-              icon: (click1 == true ) ? heartImage :  heartFull
+              icon: (click1 == true) ? heartImage : heartFull,
             ),
             IconButton(
-            onPressed: () {
-            setState ((){
-            click2 =!click2;
-            });
-            },
-            icon: (click2 == true ) ? starImage :  starFull
-            )
+              onPressed: () {
+                setState(() {
+                  click2 = !click2;
+                });
+                if (click2) {
+                  _unstarGame(widget.appid);
+                } else {
+                  _starGame(widget.appid);
+                }
+              },
+              icon: (click2 == true) ? starImage : starFull,
+            ),
+
           ],
         ),
         body: Container(
