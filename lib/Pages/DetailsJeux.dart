@@ -270,8 +270,8 @@ class _DetailsJeuxState extends State<DetailsJeux> {
                             height: 100,
                           ),
                           title: Text(jeu.nom,
-                          style: TextStyle(
-                              color : Colors.white) ),
+                              style: TextStyle(
+                                  color : Colors.white) ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -371,7 +371,7 @@ class _DetailsJeuxState extends State<DetailsJeux> {
                             children: <Widget>[
                               Text(jeu.description,
                                   style: TextStyle(
-                                  color : Colors.white,
+                                      color : Colors.white,
                                       fontSize: 14) ),
                             ],
                           ),

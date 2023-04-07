@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pprojet/Pages/DetailsJeux.dart';
-import 'package:pprojet/Pages/Likesvides.dart';
+import 'package:pprojet/Pages/LikesFaux.dart';
 import 'package:pprojet/Pages/Recherche.dart';
-import 'package:pprojet/Pages/Wishlistvide.dart';
+import 'package:pprojet/Pages/WhishListFaux.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -71,7 +71,7 @@ class _AccueilState extends State<Accueil> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Likesvides()),
+                  MaterialPageRoute(builder: (context) => WhishList()),
                 );
               },
             ),
@@ -80,7 +80,7 @@ class _AccueilState extends State<Accueil> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Whishlistvide()),
+                  MaterialPageRoute(builder: (context) => LikesFaux()),
                 );
               },
             ),

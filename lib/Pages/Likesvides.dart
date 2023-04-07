@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/color.dart';
 
-class Likesvides extends StatelessWidget {
+class Likevide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +18,8 @@ class Likesvides extends StatelessWidget {
             );
           },
         ),
-            title :  // Ajoutez cette ligne pour décaler le texte de 7 pixels
-            Text("Mes likes"),
+        title :  // Ajoutez cette ligne pour décaler le texte de 7 pixels
+        Text("Mes likes"),
       ),
       backgroundColor: color_3,
       body: Column(
@@ -34,7 +34,7 @@ class Likesvides extends StatelessWidget {
           ),
           SizedBox(height: 40),
           Text(
-            "Vous n'avez pas encore liké de contenu. \n \n Cliquez sur l'étoile pour en rajouter.",
+            "Vous n'avez pas encore liké de contenu. \n \n Cliquez sur le coeur pour en rajouter.",
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,

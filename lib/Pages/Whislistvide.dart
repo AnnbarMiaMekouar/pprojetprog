@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:pprojet/Pages/Accueil.dart';
 import 'package:pprojet/Pages/color.dart';
 
-class Whishlistvide extends StatelessWidget {
+class Whishlistvides extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +18,8 @@ class Whishlistvide extends StatelessWidget {
             );
           },
         ),
-        title :  // Ajoutez cette ligne pour décaler le texte de 7 pixels
-        Text("Ma liste de souhaits"),
+            title :  // Ajoutez cette ligne pour décaler le texte de 7 pixels
+            Text("Ma liste de souhaits"),
       ),
       backgroundColor: color_3,
       body: Column(
