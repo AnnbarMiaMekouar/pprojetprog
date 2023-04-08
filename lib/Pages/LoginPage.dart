@@ -17,6 +17,13 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final mdpController = TextEditingController();
   bool isTextFieldEmpty = false;
+  bool mdpcacher = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      mdpcacher = !mdpcacher;
+    });
+  }
 
   void initState() {
     super.initState();
@@ -31,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
       });
     });
   }
+
 
   Future<bool> login(String email, String password) async {
     try {
@@ -130,25 +138,32 @@ class _LoginPageState extends State<LoginPage> {
                                     children: <Widget>[
                                       TextFormField(
                                         controller: mdpController,
+                                        obscureText: mdpcacher,
                                         decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(7),
-                                            borderSide: BorderSide (
-                                              color : Colors.blueGrey.shade900,
+                                            borderSide: BorderSide(
+                                              color: Colors.blueGrey.shade900,
                                             ),
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Colors.black,
                                                 width: 1.0,
-                                              )
-                                          ),
+                                              )),
                                           filled: true,
                                           fillColor: Colors.blueGrey.shade900,
                                           floatingLabelBehavior: FloatingLabelBehavior.never,
                                           border: const OutlineInputBorder(),
                                           hintText: 'Mot de passe',
-                                          hintStyle: const TextStyle(color:Colors.white),
+                                          hintStyle: const TextStyle(color: Colors.white),
+                                          suffixIcon: IconButton(
+                                            icon: Icon(
+                                              mdpcacher ? Icons.visibility : Icons.visibility_off,
+                                              color: Colors.white,
+                                            ),
+                                            onPressed: _togglePasswordVisibility,
+                                          ),
                                         ),
                                       ),
                                     ]
