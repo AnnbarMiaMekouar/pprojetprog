@@ -84,6 +84,7 @@ class _DetailsJeuxState extends State<DetailsJeux> {
   bool click2 = true;
 
   void _likeGame(int gameId) {
+    print('Like game called with gameId: $gameId'); // Ajoutez cette ligne
     _likesRef.child(gameId.toString()).set({'liked': true}).then((_) {
       print('Like enregistré avec succès');
     }).catchError((error) {
@@ -92,6 +93,7 @@ class _DetailsJeuxState extends State<DetailsJeux> {
   }
 
   void _unlikeGame(int gameId) {
+    print('Unlike game called with gameId: $gameId'); // Ajoutez cette ligne
     _likesRef.child(gameId.toString()).remove().then((_) {
       print('Like supprimé avec succès');
     }).catchError((error) {
@@ -100,6 +102,7 @@ class _DetailsJeuxState extends State<DetailsJeux> {
   }
 
   void _starGame(int gameId) {
+    print('Star game called with gameId: $gameId'); // Ajoutez cette ligne
     _starsRef.child(gameId.toString()).set({'starred': true}).then((_) {
       print('Étoile enregistrée avec succès');
     }).catchError((error) {
@@ -108,6 +111,7 @@ class _DetailsJeuxState extends State<DetailsJeux> {
   }
 
   void _unstarGame(int gameId) {
+    print('Unstar game called with gameId: $gameId'); // Ajoutez cette ligne
     _starsRef.child(gameId.toString()).remove().then((_) {
       print('Étoile supprimée avec succès');
     }).catchError((error) {
@@ -157,11 +161,6 @@ class _DetailsJeuxState extends State<DetailsJeux> {
       print("Erreur lors de la récupération de l'état initial de l'étoile : $error");
     }
   }
-
-
-
-
-
 
 
   @override

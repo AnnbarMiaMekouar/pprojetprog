@@ -5,6 +5,8 @@ import 'package:pprojet/Pages/Whislistvide.dart';
 import 'package:pprojet/Pages/color.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LikesFaux extends StatefulWidget {
   const LikesFaux ({Key? key}) : super(key: key);
@@ -13,7 +15,9 @@ class LikesFaux extends StatefulWidget {
   _LikesFauxState createState() => _LikesFauxState();
 }
 
-class _LikesFauxState extends State<LikesFaux > {
+
+class _LikesFauxState extends State<LikesFaux >
+{
   Map<int, Map<dynamic, dynamic>> _likedGames = {};
   bool _dataLoaded = false;
 
@@ -21,7 +25,7 @@ class _LikesFauxState extends State<LikesFaux > {
   final DatabaseReference _likesRef = FirebaseDatabase.instanceFor(
     app: Firebase.app(),
     databaseURL: 'https://progmobile-745dc-default-rtdb.europe-west1.firebasedatabase.app',
-  ).ref().child('likes');
+  ).ref().child('stars');
 
   @override
   void initState() {
@@ -57,20 +61,56 @@ class _LikesFauxState extends State<LikesFaux > {
   Future<Map<dynamic, dynamic>> _fetchGameDetails(int gameId) async {
     Map<dynamic, dynamic> gameData = {};
 
-    // Replace with your Firebase Realtime Database URL
-    final DatabaseReference _gameRef = FirebaseDatabase.instanceFor(
-      app: Firebase.app(),
-      databaseURL: 'https://progmobile-745dc-default-rtdb.europe-west1.firebasedatabase.app', // Remplacez ceci par l'URL de votre base de données Firebase
-    ).ref().child('games').child(gameId.toString());
+    final response = await http.get(Uri.parse('https://store.steampowered.com/api/appdetails?appids=$gameId'));
 
-    DataSnapshot dataSnapshot = (await _gameRef.once()).snapshot;
+    if (response.statusCode == 200) {
+      Map<String, dynamic> jsonResponse = json.decode(response.body);
+      if (jsonResponse.containsKey(gameId.toString()) && jsonResponse[gameId.toString()]['success']) {
+        Map<String, dynamic> gameDetails = jsonResponse[gameId.toString()]['data'];
 
-    if (dataSnapshot.value != null) {
-      gameData = dataSnapshot.value as Map<dynamic, dynamic>;
+        // Récupérer les données du jeu
+        String nom = gameDetails['name'] ?? '';
+        String image = gameDetails['header_image'] ?? '';
+        List<dynamic> auteur = gameDetails['publishers'] ?? [];
+        Map<String, dynamic>? priceData = gameDetails['price_overview'];
+
+        String prix;
+        if (priceData != null) {
+          if(priceData['initial_formatted'] != "") {
+            prix = priceData['initial_formatted'];
+          } else {
+            prix = priceData['final_formatted'];
+          }
+        } else {
+          prix = "Gratuit";
+        }
+
+        gameData = {
+          'name': nom,
+          'image_url': image,
+          'author': auteur.join(', '),
+          'price': prix
+        };
+
+        // Récupérer les données supplémentaires de Firebase
+        final DatabaseReference _gameRef = FirebaseDatabase.instanceFor(
+          app: Firebase.app(),
+          databaseURL: 'https://progmobile-745dc-default-rtdb.europe-west1.firebasedatabase.app',
+        ).ref().child('games').child(gameId.toString());
+
+        DataSnapshot dataSnapshot = (await _gameRef.once()).snapshot;
+
+        if (dataSnapshot.value != null) {
+          Map<dynamic, dynamic> firebaseData = dataSnapshot.value as Map<dynamic, dynamic>;
+          gameData.addAll(firebaseData);
+        }
+      }
     }
 
     return gameData;
   }
+
+
 
 
 
@@ -89,7 +129,7 @@ class _LikesFauxState extends State<LikesFaux > {
             );
           },
         ),
-        title: Text("Mes likes"),
+        title: Text("Ma liste de souhaits"),
       ),
       body: FutureBuilder<Map<int, Map<dynamic, dynamic>>>(
         future: _fetchGameData(),
@@ -117,10 +157,10 @@ class _LikesFauxState extends State<LikesFaux > {
   }
 
   Widget _buildGameCard(BuildContext context, String gameId, Map<dynamic, dynamic> gameData) {
-    String gameTitle = gameData["title"] ?? "Titre ";
-    String gameAuthor = gameData["author"] ?? "Auteur ";
-    String gamePrice = gameData["price"] ?? "Prix ";
-    String gameImageUrl = gameData["image_url"] ?? "";
+    String titre = gameData["title"] ?? "Titre ";
+    String auteur = gameData["author"] ?? "Auteur ";
+    String prix = gameData["price"] ?? "Prix ";
+    String image = gameData["image_url"] ?? "";
 
     return Card(
       child: Container(
@@ -129,10 +169,11 @@ class _LikesFauxState extends State<LikesFaux > {
         color: color_3,
         child: Row(
           children: [
-            gameImageUrl.isNotEmpty
-                ? Image.network(gameImageUrl)
-                : Image.asset('assets/images/COD.jpg'),
-            // Utilisez une image par défaut si aucune image n'est disponible
+            Image.network(
+              image,
+              width: 120,
+              height: 120,
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -141,7 +182,7 @@ class _LikesFauxState extends State<LikesFaux > {
                   children: <Widget>[
                     SizedBox(height: 15),
                     Text(
-                      gameTitle,
+                      titre,
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.white,
@@ -149,7 +190,7 @@ class _LikesFauxState extends State<LikesFaux > {
                     ),
                     SizedBox(height: 5),
                     Text(
-                      gameAuthor,
+                      auteur,
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.white,
@@ -168,7 +209,7 @@ class _LikesFauxState extends State<LikesFaux > {
                           ),
                         ),
                         Text(
-                          gamePrice,
+                          prix,
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.white,
