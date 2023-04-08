@@ -178,7 +178,7 @@ class _InscriptionState extends State<Inscription> {
                               Form(
                                   child: Column(children: <Widget>[
                                     TextFormField(
-                                      controller: TextEditingController(),
+                                      controller: motDePasseController,
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(7),
