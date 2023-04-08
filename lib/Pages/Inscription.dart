@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'accueil.dart';
 import 'color.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 
 
 //https://firebase.google.com/docs/auth/flutter/password-auth
@@ -24,6 +26,8 @@ class _InscriptionState extends State<Inscription> {
   final motDePasseController = TextEditingController();
 
   bool isTextFieldEmpty = false;
+  bool ismdp = true;
+  bool ismdpcontour= false;
 
   void initState(){
     super.initState();
@@ -179,18 +183,28 @@ class _InscriptionState extends State<Inscription> {
                                   child: Column(children: <Widget>[
                                     TextFormField(
                                       controller: motDePasseController,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          ismdp = value.isEmpty;
+                                        });
+                                      },
+                                      onTap: () {
+                                        setState(() {
+                                          ismdpcontour = true;
+                                        });
+                                      },
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(7),
                                           borderSide: BorderSide(
-                                            color: Colors.blueGrey.shade900,
+                                            color: ismdpcontour? Colors.blueGrey.shade900 : Colors.red,
                                           ),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Colors.red,
-                                              width: 1.0,
-                                            )
+                                          borderSide: BorderSide(
+                                            color: Colors.red,
+                                            width: 1.0,
+                                          ),
                                         ),
                                         filled: true,
                                         fillColor: Colors.blueGrey.shade900,
@@ -198,6 +212,13 @@ class _InscriptionState extends State<Inscription> {
                                         border: const OutlineInputBorder(),
                                         hintText: 'Mot de passe',
                                         hintStyle: const TextStyle(color: Colors.white),
+                                        suffixIcon: ismdp
+                                            ? SvgPicture.asset(
+                                          'assets/images/warning.svg',
+                                          height: 5,
+                                          width: 5,
+                                        )
+                                            : null,
                                       ),
                                     ),
                                   ]
