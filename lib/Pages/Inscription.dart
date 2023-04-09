@@ -5,10 +5,6 @@ import 'color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 
-
-//https://firebase.google.com/docs/auth/flutter/password-auth
-
-
 class Inscription extends StatefulWidget {
   const Inscription({Key? key}) : super(key: key);
 
@@ -58,20 +54,17 @@ class _InscriptionState extends State<Inscription> {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  Future<User?> createAccount( { required String nom, required String email, required String motdepasse,})
-  async {
+  Future<User?> createAccount({required String nom, required String email, required String motdepasse}) async {
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: motdepasse,
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('Le mot de passe n est pas assez long ');
-
       } else if (e.code == 'email-already-in-use') {
         print('Il existe deja un compte associé a cette adresse mail');
-
       }
     } catch (e) {
       isTextFieldEmpty = true;
@@ -79,6 +72,7 @@ class _InscriptionState extends State<Inscription> {
     }
     isTextFieldEmpty = false;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold( body: SafeArea (

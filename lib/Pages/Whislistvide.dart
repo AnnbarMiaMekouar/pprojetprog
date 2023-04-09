@@ -18,7 +18,7 @@ class Whishlistvides extends StatelessWidget {
             );
           },
         ),
-            title :  // Ajoutez cette ligne pour décaler le texte de 7 pixels
+            title :
             Text("Ma liste de souhaits"),
       ),
       backgroundColor: color_3,
@@ -27,7 +27,7 @@ class Whishlistvides extends StatelessWidget {
         children: [
           Center(
             child: SvgPicture.asset(
-              'assets/images/empty_whishlist.svg', // remplacez `your_image_name.svg` par le nom de votre image
+              'assets/images/empty_whishlist.svg',
               width: 200,
               height: 200,
             ),

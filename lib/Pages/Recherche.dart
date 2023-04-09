@@ -120,28 +120,27 @@ class _RechercheState extends State<Recherche> {
   }
 
   Future<List<int>> Rechercheds(String query) async {
-    // Envoyer une requête GET à l'API Steam avec le mot-clé
+
     final response = await http.get(Uri.parse(
         'https://steamcommunity.com/actions/SearchApps/${query}')
     );
 
-    // Vérifier si la réponse a un code de statut 200 (OK)
+
     if (response.statusCode == 200) {
-      // Créer une liste vide pour stocker les ID de jeu
+
       List<int> gameIds = [];
 
-      // Décoder la réponse JSON et extraire la liste des jeux
       final List<dynamic> data = json.decode(response.body);
 
-      // Ajouter les ID de jeu à la liste
+
       for (var item in data) {
         gameIds.add(int.parse(item["appid"]));
       }
 
-      // Retourner la liste des ID de jeu
+
       return gameIds;
     } else {
-      // Si la réponse a un code de statut différent de 200, lancer une exception
+
       throw Exception("Erreur lors de la recherche des jeux");
     }
   }

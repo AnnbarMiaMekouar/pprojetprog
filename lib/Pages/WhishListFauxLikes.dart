@@ -66,7 +66,7 @@ class _WhishListState extends State<WhishList> {
       if (jsonResponse.containsKey(gameId.toString()) && jsonResponse[gameId.toString()]['success']) {
         Map<String, dynamic> gameDetails = jsonResponse[gameId.toString()]['data'];
 
-        // Récupérer les données du jeu
+
         String nom = gameDetails['name'] ?? '';
         String image = gameDetails['header_image'] ?? '';
         List<dynamic> auteur = gameDetails['publishers'] ?? [];
@@ -90,7 +90,6 @@ class _WhishListState extends State<WhishList> {
           'price': prix
         };
 
-        // Récupérer les données supplémentaires de Firebase
         final DatabaseReference _gameRef = FirebaseDatabase.instanceFor(
           app: Firebase.app(),
           databaseURL: 'https://progmobile-745dc-default-rtdb.europe-west1.firebasedatabase.app',
@@ -107,10 +106,6 @@ class _WhishListState extends State<WhishList> {
 
     return gameData;
   }
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +133,7 @@ class _WhishListState extends State<WhishList> {
             WidgetsBinding.instance?.addPostFrameCallback((_) {
               Navigator.push(context, MaterialPageRoute(builder: (context) => Likevide()));
             });
-            return Container(); // Retournez un conteneur vide
+            return Container(); //
           } else {
             return ListView.builder(
               itemCount: snapshot.data!.length,

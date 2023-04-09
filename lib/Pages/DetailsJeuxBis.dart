@@ -174,8 +174,8 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
                     ),
                     SizedBox(height: 16.0),
                     Container(
-                      height: 50.0, // définit la hauteur du container
-                      width: 350.0, // définit la largeur du container
+                      height: 50.0,
+                      width: 350.0,
                       child: Row(
                         children: [
                           Expanded(

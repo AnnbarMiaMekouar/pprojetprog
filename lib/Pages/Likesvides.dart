@@ -18,7 +18,7 @@ class Likevide extends StatelessWidget {
             );
           },
         ),
-        title :  // Ajoutez cette ligne pour décaler le texte de 7 pixels
+        title :
         Text("Mes likes"),
       ),
       backgroundColor: color_3,
@@ -27,7 +27,7 @@ class Likevide extends StatelessWidget {
         children: [
           Center(
             child: SvgPicture.asset(
-              'assets/images/empty_likes.svg', // remplacez `your_image_name.svg` par le nom de votre image
+              'assets/images/empty_likes.svg',
               width: 200,
               height: 200,
             ),

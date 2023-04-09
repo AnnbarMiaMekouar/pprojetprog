@@ -248,7 +248,6 @@ class _AccueilState extends State<Accueil> {
             return initialFormatted != "" ? initialFormatted : finalFormatted;
           }
 
-
           String prix = getPrix(price);
 
 

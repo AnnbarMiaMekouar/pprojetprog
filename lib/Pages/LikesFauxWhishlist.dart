@@ -67,8 +67,6 @@ class _LikesFauxState extends State<LikesFaux >
       Map<String, dynamic> jsonResponse = json.decode(response.body);
       if (jsonResponse.containsKey(gameId.toString()) && jsonResponse[gameId.toString()]['success']) {
         Map<String, dynamic> gameDetails = jsonResponse[gameId.toString()]['data'];
-
-        // Récupérer les données du jeu
         String nom = gameDetails['name'] ?? '';
         String image = gameDetails['header_image'] ?? '';
         List<dynamic> auteur = gameDetails['publishers'] ?? [];
