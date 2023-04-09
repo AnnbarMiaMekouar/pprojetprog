@@ -25,7 +25,7 @@ class Jeu {
 }
 
 class _AccueilState extends State<Accueil> {
-  TextEditingController _searchController = TextEditingController();
+  TextEditingController recherche = TextEditingController();
   late Future<List<Jeu>> _futurejeux;
 
 //Initialisation
@@ -92,7 +92,7 @@ class _AccueilState extends State<Accueil> {
         padding:
         EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: TextField(
-            controller: _searchController,
+            controller: recherche,
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(7),
@@ -116,7 +116,7 @@ class _AccueilState extends State<Accueil> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Recherche(query: _searchController.text)),
+                    MaterialPageRoute(builder: (context) => Recherche(query: recherche.text)),
                   );
                 },
                 child: Image.asset(
@@ -237,19 +237,20 @@ class _AccueilState extends State<Accueil> {
           final String nom = jsonResponse['name'];
           final String image = jsonResponse['header_image'];
           final List<dynamic> auteur = jsonResponse['publishers'];
-          final Map<String, dynamic>? appel2 = json.decode(response.body)[Id.toString()]['data']['price_overview'];
+          final Map<String, dynamic>? price = json.decode(response.body)[Id.toString()]['data']['price_overview'];
 
-          String prix;
-          if (appel2 != null) {
-            if(appel2['initial_formatted'] != "")
-            {
-              prix = appel2['initial_formatted'];
-            } else {
-              prix = appel2['final_formatted'];
+          String getPrix(Map<String, dynamic>? price) {
+            if (price == null) {
+              return "Gratuit";
             }
-          } else {
-            prix = "Gratuit";
+            String initialFormatted = price['initial_formatted'] as String? ?? "";
+            String finalFormatted = price['final_formatted'] as String? ?? "";
+            return initialFormatted != "" ? initialFormatted : finalFormatted;
           }
+
+
+          String prix = getPrix(price);
+
 
           final Jeu jeu = Jeu(Id: Id, nom: nom, auteur: auteur, prix : prix, image: image);
           jeux.add(jeu);
