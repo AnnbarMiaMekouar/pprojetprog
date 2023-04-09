@@ -154,7 +154,7 @@ class _LikesFauxState extends State<LikesFaux >
   }
 
   Widget _buildGameCard(BuildContext context, String gameId, Map<dynamic, dynamic> gameData) {
-    String titre = gameData["title"] ?? "Titre ";
+    String nom = gameData['name'] ?? '';
     String auteur = gameData["author"] ?? "Auteur ";
     String prix = gameData["price"] ?? "Prix ";
     String image = gameData["image_url"] ?? "";
@@ -179,7 +179,7 @@ class _LikesFauxState extends State<LikesFaux >
                   children: <Widget>[
                     SizedBox(height: 15),
                     Text(
-                      titre,
+                    nom,
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.white,
@@ -192,6 +192,9 @@ class _LikesFauxState extends State<LikesFaux >
                         fontSize: 13,
                         color: Colors.white,
                       ),
+                    ),
+                    SizedBox(
+                      height: 8,
                     ),
                     Row(
                       children: [
