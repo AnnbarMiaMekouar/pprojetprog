@@ -250,12 +250,16 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
                         width: 360,
                         height: 90,
                         child: ListTile(
-                          title: Text('Titre de la card'),
+                          title: Text('JoueurX',
+                              style: TextStyle(
+                                  color : Colors.white)),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text('Description de la card'),
-                              Text('Autre information'),
+                              SizedBox(height : 4),
+                              Text('Le jeu est super',
+                                  style: TextStyle(
+                                      color : Colors.white)),
                             ],
                           ),
                           trailing: Container(
@@ -267,7 +271,7 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 3.0),
+                    SizedBox(height: 16.0),
                     Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
@@ -277,23 +281,28 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
                         width: 360,
                         height: 90,
                         child: ListTile(
-                          title: Text('Titre de la card'),
+                          title: Text('JoueurX',
+                              style: TextStyle(
+                                  color : Colors.white)),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text('Description de la card'),
-                              Text('Autre information'),
+                              SizedBox(height : 4),
+                              Text('Le jeu est super',
+                                  style: TextStyle(
+                                      color : Colors.white)),
                             ],
                           ),
                           trailing: Container(
                             width: 50.0,
                             height: 8.0,
-                            child: SvgPicture.asset('assets/images/Group 10.svg'),
+                            child: SvgPicture.asset(
+                                'assets/images/Group 10.svg'),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 3.0),
+                    SizedBox(height: 16.0),
                     Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
@@ -303,23 +312,28 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
                         width: 360,
                         height: 90,
                         child: ListTile(
-                          title: Text('Titre de la card'),
+                          title: Text('JoueurX',
+                              style: TextStyle(
+                                  color : Colors.white)),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text('Description de la card'),
-                              Text('Autre information'),
+                              SizedBox(height : 4),
+                              Text('Le jeu est super',
+                                  style: TextStyle(
+                                      color : Colors.white)),
                             ],
                           ),
                           trailing: Container(
                             width: 50.0,
                             height: 8.0,
-                            child: SvgPicture.asset('assets/images/Group 10.svg'),
+                            child: SvgPicture.asset(
+                                'assets/images/Group 10.svg'),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 3.0),
+                    SizedBox(height: 16.0),
                     Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
@@ -329,18 +343,23 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
                         width: 360,
                         height: 90,
                         child: ListTile(
-                          title: Text('Titre de la card'),
+                          title: Text('JoueurX',
+                              style: TextStyle(
+                                  color : Colors.white)),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text('Description de la card'),
-                              Text('Autre information'),
+                              SizedBox(height : 4),
+                              Text('Le jeu est super',
+                                  style: TextStyle(
+                                      color : Colors.white)),
                             ],
                           ),
                           trailing: Container(
                             width: 50.0,
                             height: 8.0,
-                            child: SvgPicture.asset('assets/images/Group 10.svg'),
+                            child: SvgPicture.asset(
+                                'assets/images/Group 10.svg'),
                           ),
                         ),
                       ),
