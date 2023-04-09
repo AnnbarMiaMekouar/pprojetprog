@@ -5,6 +5,7 @@ import 'package:pprojet/Pages/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class DetailsJeuxBis extends StatefulWidget {
   const DetailsJeuxBis({Key? key, required this.appid}) : super(key: key);
@@ -129,7 +130,8 @@ class _DetailsJeuxBisState extends State<DetailsJeuxBis> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final jeu = snapshot.data!;
-          return ListView.builder(
+          return ScrollablePositionedList.builder(
+            itemCount: 1,
             itemBuilder: (context, index) {
               return
                 Column(

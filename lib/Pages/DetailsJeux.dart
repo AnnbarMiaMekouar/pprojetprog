@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 
 class DetailsJeux extends StatefulWidget {
@@ -241,7 +242,8 @@ class _DetailsJeuxState extends State<DetailsJeux> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final jeu = snapshot.data!;
-          return ListView.builder(
+          return ScrollablePositionedList.builder(
+            itemCount: 1,
             itemBuilder: (context, index) {
               return
                 Column(
